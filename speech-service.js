@@ -30,6 +30,7 @@ exports.getTextFromAudioStream = function (stream) {
 };
 
 function authenticate(callback) {
+    console.log('ok3');
     var requestData = {
         url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken',
         headers: {
@@ -56,6 +57,7 @@ function authenticate(callback) {
 }
 
 function streamToText(stream, resolve, reject) {
+    console.log('ok4');
     var speechApiUrl = [
         'https://speech.platform.bing.com/recognize?scenarios=smd',
         'appid=D4D52672-91D7-4C74-8AD8-42B1D98141A5',
@@ -75,11 +77,13 @@ function streamToText(stream, resolve, reject) {
             'content-type': 'audio/wav; codec=\'audio/pcm\'; samplerate=16000'
         }
     };
-
+    console.log('ok5');
     stream.pipe(request.post(speechRequestData, function (error, response, body) {
         if (error) {
+            console.log('ok6');
             reject(error);
         } else if (response.statusCode !== 200) {
+            console.log('ok7');
             reject(body);
         } else {
             resolve(JSON.parse(body).header.name);
