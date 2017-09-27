@@ -36,6 +36,7 @@ bot.dialog('/', (session, args, next) => {
 });
 
 function hasAudioAttachment(session) {
+    console.log(session.message.attachments.length > 0?session.message.attachments[0].contentType:'no attach');
     return session.message.attachments.length > 0 &&
         (session.message.attachments[0].contentType === 'audio/wav' ||
             session.message.attachments[0].contentType === 'application/octet-stream');
