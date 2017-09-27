@@ -21,6 +21,7 @@ const [bot, connector] = utils.initBot();
 bot.dialog('/', (session, args, next) => {
     if (hasAudioAttachment(session)) {
         var stream = getAudioStreamFromMessage(session.message);
+        console.log('ok2!');
         speechService.getTextFromAudioStream(stream)
             .then(function (text) {
                 session.send(processText(text));
@@ -48,11 +49,12 @@ function getAudioStreamFromMessage(message) {
         // you should set the JwtToken of your bot as the authorization 
         // header for the GET request your bot initiates to fetch the image.
         // https://github.com/Microsoft/BotBuilder/issues/662
+        console.log('con token!');
         connector.getAccessToken(function (error, token) {
             var tok = token;
             headers['Authorization'] = 'Bearer ' + token;
             headers['Content-Type'] = 'application/octet-stream';
-
+            console.log('ok1!');
             return needle.get(attachment.contentUrl, { headers: headers });
         });
     }
