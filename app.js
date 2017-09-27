@@ -13,7 +13,7 @@ require('dotenv').config();
 
 const utils = require('./utils');
 
-const bot = utils.initBot();
+const [bot, connector] = utils.initBot();
 
 // bot.dialog('/', (session) =>
 //     session.send(`Hola ${session.message.user.name.split(" ", 1)[0]}, me dijiste: ${session.message.text}`));

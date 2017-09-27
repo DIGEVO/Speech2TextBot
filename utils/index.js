@@ -7,7 +7,7 @@ module.exports = {
         const builder = require('botbuilder');
         const connector = module.exports.getConnector(builder);
         module.exports.startServer(connector);
-        return module.exports.getBot(builder, connector);
+        return [module.exports.getBot(builder, connector), connector];
     },
 
     startServer(connector) {
