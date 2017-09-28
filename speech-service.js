@@ -83,7 +83,7 @@ function streamToText(stream, resolve, reject) {
             console.log('ok6');
             reject(error);
         } else if (response.statusCode !== 200) {
-            console.log('ok7');
+            console.log(JSON.stringify(response));
             reject(body);
         } else {
             resolve(JSON.parse(body).header.name);
